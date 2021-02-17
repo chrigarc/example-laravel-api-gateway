@@ -82,3 +82,18 @@ Route::middleware('auth:sanctum')->get('/test2', function(Request  $request) {
     $response = $guzzle->get(env('MICRO_S2'));
     return json_decode((string)$response->getBody(), true);
 });
+
+
+Route::get('/test2', function (Request $request) {
+    return new \Illuminate\Http\JsonResponse([
+        'message' => 'Hola soy laravel en una carpeta. '. now()->format('Y-m-d H:i:s')
+    ], 200,
+        ['Access-Control-Allow-Origin' => '*']);
+});
+
+
+Route::get('/test1', function (Request $request) {
+    return new \Illuminate\Http\JsonResponse([
+        'message' => 'Hola soy laravel en una carpeta. '. now()->format('Y-m-d H:i:s')
+    ]);
+});
